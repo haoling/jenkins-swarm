@@ -2,7 +2,7 @@ FROM blacklabelops/java:centos.server-jre.8
 MAINTAINER Steffen Bleul <sbl@blacklabelops.com>
 
 # Jenkins Swarm Version
-ARG SWARM_VERSION=3.4
+ARG SWARM_VERSION=3.27
 # Container User
 ARG CONTAINER_USER=swarmslave
 ARG CONTAINER_UID=1000
@@ -42,7 +42,7 @@ RUN /usr/sbin/groupadd --gid $CONTAINER_GID $CONTAINER_GROUP && \
     sha512sum /bin/tini && \
     echo "$TINI_SHA /bin/tini" | sha512sum -c - && \
     # Install Jenkins Swarm-Slave
-    export SWARM_SHA=28319771e0ce6bf51b8d93d73390aa33c1a926c45d93a73c02144ee7739a541c8ec5eabb345bc1d015e4b87ce531af971899d96b453dc9062ddbfa3a8fe88edb && \
+    export SWARM_SHA=9e5f37041bc5419a4cb156751f39340968b7f9d9e0b1c55c2c9bb230894632ba8179d66c38caa14451e941fb47268a255c90dafa71b0478a35352173d5b3e8bd && \
     mkdir -p ${SWARM_HOME} && \
     wget --directory-prefix=${SWARM_HOME} \
       https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${SWARM_VERSION}/swarm-client-${SWARM_VERSION}.jar && \
